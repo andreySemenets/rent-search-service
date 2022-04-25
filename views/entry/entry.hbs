@@ -1,0 +1,41 @@
+{{#unless entry}}
+<p>Нет такой записи</p>
+{{/unless}}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 1000px" >
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/uploads/{{first.image}}" class="d-block w-100" alt="...">
+    </div>
+    {{#each images}}
+     <div class="carousel-item">
+      <img src="/uploads/{{image}}" class="d-block w-100" alt="...">
+    </div>
+   {{/each}} 
+  </div>
+</div>
+ 
+
+  
+
+<h1>{{entry.title}}</h1>
+
+<div class="main-header"><p>{{entry.body}}</p>
+<p>Комнаты  {{entry.rooms}}</p>
+<p>Местоположение  {{entry.geo}}</p>
+<p>Тип   {{entry.type}}</p>
+</div>
+
+{{!-- {{#each images}}
+<img src="/uploads/{{image}}" alt="hz"/>
+
+{{/each}} --}}
+{{#if isAuthor}}
+<ul id="editAndDeleteUl" class="no-bullets no-padding mar-t-2">
+<a href="/entries/{{ entry.id }}/edit"><button class="btn btn-secondary">Редактировать</button></a>
+    <form action="/entries/delete/{{ entry.id }}" method="post">
+
+    <button id="deleteEntryButton" 
+      class="btn btn-secondary">Удалить</button>
+    </form>
+</ul>
+{{/if}}
